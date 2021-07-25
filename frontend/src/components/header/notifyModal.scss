@@ -1,0 +1,46 @@
+.notifyModal {
+  min-width: 300px;
+  z-index: 999;
+  .headerModal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    h3 {
+      font-weight: 600;
+    }
+    .button {
+      .icon {
+      }
+    }
+  }
+  .img {
+    width: 100%;
+  }
+  .listNotify {
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+    .link {
+      display: flex;
+      align-items: center;
+      .infoWrap {
+        margin: 0 10px;
+        display: flex;
+        flex-direction: column;
+        .infoName {
+          margin-right: 5px;
+        }
+      }
+    }
+    .timeMoment {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5px;
+      color: lightgray;
+      .iconRead {
+        color: #2196f3;
+      }
+    }
+  }
+}

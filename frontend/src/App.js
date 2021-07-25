@@ -1,32 +1,70 @@
 import "./app.scss";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+
 import { useContext, useEffect } from "react";
 import { refreshToken } from "./context/actions/authAction";
+import { getNotifies } from "./context/actions/notifyAction";
 import { StateContext } from "./context/StateProvider";
 
+import PrivateRouter from "./router/PrivateRouter";
+import PageRender from "./router/PageRender";
+
+import Notify from "./components/alert/Notify";
+import Header from "./components/header/Header";
+
 function App() {
-  const [, dispatch] = useContext(StateContext);
+  const [{ auth, status, modal, call }, dispatch] = useContext(StateContext);
   useEffect(() => {
     refreshToken(dispatch);
   }, [dispatch]);
 
+  useEffect(() => {
+    if (auth.token) {
+      // dispatch(getPosts(auth.token));
+      // dispatch(getSuggestions(auth.token));
+      getNotifies(auth.token, dispatch);
+    }
+  }, [dispatch, auth.token]);
+
+  useEffect(() => {
+    if (!("Notification" in window)) {
+      alert("This browser does not support desktop notification");
+    } else if (Notification.permission === "granted") {
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === "granted") {
+        }
+      });
+    }
+  }, []);
+
   return (
     <Router>
-      <div className="app"></div>
-      <Switch>
-        <Route exact path="/">
-          <Home></Home>
-        </Route>
-        <Route exact path="/register">
-          <Register></Register>
-        </Route>
-        <Route exact path="/login">
-          <Login></Login>
-        </Route>
-      </Switch>
+      <Notify></Notify>
+      <input type="checkbox" id="theme" />
+      <div className={`app ${(status || modal) && "mode"}`}>
+        <div className="main">
+          {auth.token && <Header />}
+          {/* {status && <StatusModal />}
+          {auth.token && <SocketClient />}
+          {call && <CallModal />} */}
+
+          <Route exact path="/" component={auth.token ? Home : Login} />
+          <Route exact path="/register" component={Register} />
+
+          <PrivateRouter exact path="/:page">
+            <PageRender auth={auth}></PageRender>
+          </PrivateRouter>
+          <PrivateRouter exact path="/:page/:id">
+            <PageRender auth={auth}></PageRender>
+          </PrivateRouter>
+        </div>
+      </div>
     </Router>
   );
 }

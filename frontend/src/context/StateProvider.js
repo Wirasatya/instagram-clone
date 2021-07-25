@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import auth from "../context/reducers/authReducer";
 import alert from "../context/reducers/alertReducer";
+import notify from "../context/reducers/notifyReducer";
 
 function combineReducers(reducers) {
   return (state = {}, action) => {
@@ -19,6 +20,15 @@ const initialState = {
   alert: {
     fullname: null,
     email: null,
+    loading: false,
+    success: null,
+    error: null,
+  },
+  theme: false,
+  notify: {
+    data: [],
+    loading: false,
+    sound: false,
   },
 };
 
@@ -31,6 +41,7 @@ export const StateProvider = ({ children }) => {
         combineReducers({
           auth,
           alert,
+          notify,
         }),
         initialState
       )}

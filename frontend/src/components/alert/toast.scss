@@ -1,0 +1,49 @@
+.toast {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: fixed;
+  color: white;
+  top: 5px;
+  right: 5px;
+  z-index: 100;
+  min-width: 200px;
+  background-color: white;
+  &.error {
+    background-color: #e91e63 !important;
+  }
+  &.success {
+    background-color: #a2cf6e !important;
+  }
+  .header {
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    color: white;
+    padding: 5px;
+    &.error {
+      background-color: #e91e63 !important;
+    }
+    &.success {
+      background-color: #a2cf6e !important;
+    }
+    .textTitle {
+      margin-right: auto;
+      margin-left: 5px;
+    }
+    .button {
+      cursor: pointer;
+      .icon {
+        font-size: 12px;
+        color: black;
+      }
+    }
+  }
+  .body {
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+  }
+}

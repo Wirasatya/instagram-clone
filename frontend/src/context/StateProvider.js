@@ -5,6 +5,7 @@ import notify from "../context/reducers/notifyReducer";
 import theme from "../context/reducers/themeReducer";
 import status from "../context/reducers/statusReducer";
 import post from "../context/reducers/postReducer";
+import profile from "../context/reducers/profileReducer";
 
 function combineReducers(reducers) {
   return (state = {}, action) => {
@@ -47,6 +48,12 @@ export const initialState = {
     result: 0,
     page: 2,
   },
+  profile: {
+    loading: false,
+    ids: [],
+    users: [],
+    posts: [],
+  },
 };
 
 export const StateContext = createContext();
@@ -62,6 +69,7 @@ export const StateProvider = ({ children }) => {
           theme,
           status,
           post,
+          profile,
         }),
         initialState
       )}

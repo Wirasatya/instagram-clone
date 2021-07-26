@@ -1,7 +1,7 @@
 import React from "react";
 
 const LoadMoreBtn = () => {
-  return <div></div>;
+  return <div>load more</div>;
 };
 
 export default LoadMoreBtn;

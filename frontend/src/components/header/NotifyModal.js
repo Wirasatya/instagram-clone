@@ -102,9 +102,9 @@ const NotifyModal = () => {
         ))}
       </div>
 
-      <hr className="my-1" />
+      <hr />
       <div
-        className="text-right text-danger mr-2"
+        className="deleteText"
         style={{ cursor: "pointer" }}
         onClick={handleDeleteAll}
       >

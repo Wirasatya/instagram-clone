@@ -1,7 +1,11 @@
 .search {
-  flex: 1;
+  flex: 2;
   align-items: center;
   margin: 0 30px;
+  @media (max-width: 766px) {
+    width: 100%;
+    padding-right: 20px;
+  }
   .form {
     position: relative;
     input {
@@ -40,10 +44,10 @@
       font-weight: 900;
       color: crimson;
     }
-    .loading {
+    .loadingSearch {
       position: absolute;
       top: 50%;
-      right: 5px;
+      right: 15px;
       width: 15px;
       height: 15px;
       transform: translateY(-50%);
@@ -56,6 +60,7 @@
       max-height: calc(100vh - 150px);
       overflow: auto;
       margin-top: 3px;
+      z-index: 100;
     }
   }
 }

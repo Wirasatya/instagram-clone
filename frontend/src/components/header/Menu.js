@@ -36,7 +36,7 @@ const Menu = () => {
   };
   return (
     <div className="menu">
-      <ul className="navbar">
+      <ul className="navbarMenu">
         {navLinks.map((link) => (
           <li className={`list ${isActive(link.path)}`} key={link.label}>
             <Link className="link" to={link.path}>
@@ -94,6 +94,7 @@ const Menu = () => {
                 }
               >
                 {theme ? "Light mode" : "Dark mode"}
+                {}
               </label>
               <hr />
               <Link className="link" to="/" onClick={() => logout(dispatch)}>

@@ -16,6 +16,7 @@ import PageRender from "./router/PageRender";
 
 import Notify from "./components/alert/Notify";
 import Header from "./components/header/Header";
+import { getPosts } from "./context/actions/postAction";
 
 function App() {
   const [{ auth, status, modal, call }, dispatch] = useContext(StateContext);
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if (auth.token) {
-      // dispatch(getPosts(auth.token));
+      getPosts(auth.token, dispatch);
       // dispatch(getSuggestions(auth.token));
       getNotifies(auth.token, dispatch);
     }

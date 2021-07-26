@@ -1,0 +1,26 @@
+.home {
+  display: flex;
+  margin: 0;
+  @media (max-width: 766px) {
+    flex-direction: column;
+  }
+  .containerHome {
+    flex: 8;
+    align-items: center;
+    .loadingPost {
+      display: block;
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      @media (max-width: 766px) {
+        left: 50%;
+      }
+    }
+    .noPost {
+    }
+  }
+  .sidebarRight {
+    flex: 4;
+  }
+}

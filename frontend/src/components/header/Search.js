@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { getDataAPI } from "../../utils/fetchData";
 import { GLOBALTYPES } from "../../context/globalTypes";
-import UserCard from "../userData/UserData";
+import UserCard from "../userCard/UserCard";
 import LoadIcon from "../../images/loading.gif";
 import { StateContext } from "../../context/StateProvider";
 import { SearchOutlined } from "@material-ui/icons";
@@ -63,7 +63,7 @@ const Search = () => {
         <button type="submit" style={{ display: "none" }}>
           Search
         </button>
-        {load && <img className="loading" src={LoadIcon} alt="loading" />}
+        {load && <img className="loadingSearch" src={LoadIcon} alt="loading" />}
         <div className="users">
           {search &&
             users.map((user) => (

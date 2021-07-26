@@ -1,0 +1,17 @@
+.status {
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 4px #757575, -3px -3px 5px 4px #757575;
+  //   box-shadow: -3px -3px 5px 4px #757575;
+  margin: 20px;
+  .avatarStatus {
+    margin-right: 10px;
+  }
+  .buttonStatus {
+    padding: 10px 5px;
+    width: 100%;
+    border-radius: 15px;
+    border: 0.25px solid lightgray;
+  }
+}

@@ -2,7 +2,7 @@
   display: none;
 }
 #theme:checked ~ * {
-  filter: invert(1);
+  filter: invert(100%);
 }
 
 .app {

@@ -1,10 +1,19 @@
 .menu {
   display: flex;
   flex: 1;
-  .navbar {
+  @media (max-width: 766px) {
+    height: 40px;
+    width: 100%;
+  }
+  .navbarMenu {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @media (max-width: 766px) {
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 10px;
+    }
     .list {
       opacity: 0.5;
       list-style: none;
@@ -45,7 +54,7 @@
       .dropdownContent,
       .dropdownContentNotify {
         display: flex;
-        background-color: aqua;
+        background-color: #fff;
         position: absolute;
         display: flex;
         flex-direction: column;
@@ -60,10 +69,12 @@
         }
       }
       .dropdownContentNotify {
-        bottom: -370px !important;
+        bottom: -365px !important;
       }
       .dropdownContent {
-        bottom: -90px !important;
+        bottom: -100px !important;
+        border: 0.5px solid black;
+        right: 10px;
       }
     }
   }

@@ -10,7 +10,7 @@ const Header = () => {
       <nav className="navbar">
         <Link to="/" className="link">
           <h1
-            className="icon"
+            className="iconHeader"
             onClick={() => {
               window.scrollTo({ top: 0 });
             }}

@@ -11,7 +11,7 @@ import { StateContext } from "../../context/StateProvider";
 import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const [{ profile, auth }, dispatch] = useContext(StateContext);
+  const [{ profile, auth, theme }, dispatch] = useContext(StateContext);
 
   const { id } = useParams();
   const [saveTab, setSaveTab] = useState(false);
@@ -24,7 +24,13 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      <Info auth={auth} profile={profile} dispatch={dispatch} id={id} />
+      <Info
+        theme={theme}
+        auth={auth}
+        profile={profile}
+        dispatch={dispatch}
+        id={id}
+      />
 
       {auth.user._id === id && (
         <div className="tab">

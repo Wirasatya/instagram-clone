@@ -7,7 +7,7 @@ import Following from "./Followings";
 import { GLOBALTYPES } from "../../context/globalTypes";
 import "./info.scss";
 
-const Info = ({ id, auth, profile, dispatch }) => {
+const Info = ({ theme, id, auth, profile, dispatch }) => {
   const [userData, setUserData] = useState([]);
   const [onEdit, setOnEdit] = useState(false);
 
@@ -35,13 +35,18 @@ const Info = ({ id, auth, profile, dispatch }) => {
     <div className="info">
       {userData.map((user) => (
         <div className="container" key={user._id}>
-          <Avatar src={user.avatar} className="avatarIcon" size="medium" />
+          <Avatar
+            src={user.avatar}
+            className="avatarIcon"
+            size="medium"
+            style={{ filter: theme ? "invert(1)" : "invert(0)" }}
+          />
 
           <div className="content">
             <div className="contentTitle">
               <h2>{user.username}</h2>
               {user._id === auth.user._id ? (
-                <button className="button" onClick={() => setOnEdit(true)}>
+                <button className="buttonEdit" onClick={() => setOnEdit(true)}>
                   Edit Profile
                 </button>
               ) : (

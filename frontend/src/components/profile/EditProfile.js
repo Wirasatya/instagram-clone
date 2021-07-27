@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./editProfile.scss";
+import { CameraAltOutlined } from "@material-ui/icons";
 
 import { checkImage } from "../../utils/imageUpload";
 import { GLOBALTYPES } from "../../context/globalTypes";
 import { StateContext } from "../../context/StateProvider";
 import { updateProfileUser } from "../../context/actions/profileAction";
+import { Avatar } from "@material-ui/core";
 
 const EditProfile = ({ setOnEdit }) => {
   const initState = {
@@ -20,7 +22,7 @@ const EditProfile = ({ setOnEdit }) => {
 
   const [avatar, setAvatar] = useState("");
 
-  const [{ auth, theme }, dispatch] = useContext(StateContext);
+  const [{ auth, theme, alert }, dispatch] = useContext(StateContext);
 
   useEffect(() => {
     setUserData(auth.user);
@@ -50,126 +52,118 @@ const EditProfile = ({ setOnEdit }) => {
   };
 
   return (
-    <div className="edit_profile">
-      <button
-        className="btn btn-danger btn_close"
-        onClick={() => setOnEdit(false)}
-      >
-        Close
-      </button>
+    <div className="editProfile">
+      {!alert.loading && (
+        <>
+          <button className="buttonClose" onClick={() => setOnEdit(false)}>
+            Close
+          </button>
 
-      <form onSubmit={handleSubmit}>
-        <div className="info_avatar">
-          <img
-            src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
-            alt="avatar"
-            style={{ filter: theme ? "invert(1)" : "invert(0)" }}
-          />
-          <span>
-            <i className="fas fa-camera" />
-            <p>Change</p>
-            <input
-              type="file"
-              name="file"
-              id="file_up"
-              accept="image/*"
-              onChange={changeAvatar}
-            />
-          </span>
-        </div>
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="avatarWrapper">
+              <Avatar
+                src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
+                alt="avatar"
+                style={{ filter: theme ? "invert(1)" : "invert(0)" }}
+                className="avatar"
+              />
+              <span>
+                <CameraAltOutlined className="iconCamera"></CameraAltOutlined>
+                <p>Change</p>
+                <input
+                  type="file"
+                  name="file"
+                  id="file_up"
+                  className="inputFile"
+                  accept="image/*"
+                  onChange={changeAvatar}
+                />
+              </span>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="fullname">Full Name</label>
-          <div className="position-relative">
-            <input
-              type="text"
-              className="form-control"
-              id="fullname"
-              name="fullname"
-              value={fullname}
-              onChange={handleInput}
-            />
-            <small
-              className="text-danger position-absolute"
-              style={{
-                top: "50%",
-                right: "5px",
-                transform: "translateY(-50%)",
-              }}
-            >
-              {fullname.length}/25
-            </small>
-          </div>
-        </div>
+            <div className="inputContainer">
+              <label htmlFor="fullname">Full Name</label>
+              <div className="inputWrapper">
+                <input
+                  type="text"
+                  className="input"
+                  id="fullname"
+                  name="fullname"
+                  value={fullname}
+                  onChange={handleInput}
+                />
+                <small className="smallInput">{fullname.length}/25</small>
+              </div>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="mobile">Mobile</label>
-          <input
-            type="text"
-            name="mobile"
-            value={mobile}
-            className="form-control"
-            onChange={handleInput}
-          />
-        </div>
+            <div className="inputContainer">
+              <label htmlFor="mobile">Mobile</label>
+              <input
+                type="text"
+                name="mobile"
+                value={mobile}
+                className="input"
+                onChange={handleInput}
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            name="address"
-            value={address}
-            className="form-control"
-            onChange={handleInput}
-          />
-        </div>
+            <div className="inputContainer">
+              <label htmlFor="address">Address</label>
+              <input
+                type="text"
+                name="address"
+                value={address}
+                className="input"
+                onChange={handleInput}
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="website">Website</label>
-          <input
-            type="text"
-            name="website"
-            value={website}
-            className="form-control"
-            onChange={handleInput}
-          />
-        </div>
+            <div className="inputContainer">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                name="website"
+                value={website}
+                className="input"
+                onChange={handleInput}
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="story">Story</label>
-          <textarea
-            name="story"
-            value={story}
-            cols="30"
-            rows="4"
-            className="form-control"
-            onChange={handleInput}
-          />
+            <div className="inputContainer">
+              <label htmlFor="story">Story</label>
+              <textarea
+                name="story"
+                value={story}
+                cols="30"
+                rows="4"
+                className="input"
+                onChange={handleInput}
+              />
 
-          <small className="text-danger d-block text-right">
-            {story.length}/200
-          </small>
-        </div>
+              <small className="smallStory">{story.length}/200</small>
+            </div>
 
-        <label htmlFor="gender">Gender</label>
-        <div className="input-group-prepend px-0 mb-4">
-          <select
-            name="gender"
-            id="gender"
-            value={gender}
-            className="custom-select text-capitalize"
-            onChange={handleInput}
-          >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+            <label htmlFor="gender">Gender</label>
+            <div className="selectContainer">
+              <select
+                name="gender"
+                id="gender"
+                value={gender}
+                className="selectGender"
+                onChange={handleInput}
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-        <button className="btn btn-info w-100" type="submit">
-          Save
-        </button>
-      </form>
+            <button className="buttonSubmit" type="submit">
+              Save
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 };

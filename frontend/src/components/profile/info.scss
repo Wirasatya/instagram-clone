@@ -28,12 +28,17 @@
           transform: translateY(4px);
           flex: 3;
         }
-        .button {
-          flex: 2;
+        .buttonEdit {
+          flex: 1.5;
           border-radius: 5px;
-          padding: 5px;
-          border: 0.5px solid gray;
+          padding: 7px 5px;
+          border: 0.25px solid lightgray;
           cursor: pointer;
+          margin-top: 15px;
+          transition: 0.5s ease-in-out;
+          &:hover {
+            background-color: burlywood;
+          }
         }
       }
       .buttonFollow {
@@ -56,14 +61,6 @@
         .textMobile {
           color: crimson;
         }
-      }
-      .textAddress {
-      }
-      .textEmail {
-      }
-      .textWebsite {
-      }
-      .textStory {
       }
     }
   }

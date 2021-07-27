@@ -1,0 +1,135 @@
+.statusModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #0008;
+  z-index: 4;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  form {
+    max-width: 450px;
+    width: 100%;
+    background: white;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 5px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      transform: translateY(-13px);
+      .createText {
+        margin: 0;
+      }
+      span {
+        font-size: 2rem;
+        font-weight: 900;
+        cursor: pointer;
+        transform: translateY(-5px);
+      }
+    }
+    .body {
+      textarea {
+        width: 100%;
+        min-height: 150px;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+      .iconWrapp {
+        .flex-fill {
+        }
+      }
+      .imageShow {
+        max-height: 270px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        place-items: center;
+        padding: 10px 0;
+        grid-gap: 10px;
+        .imgFile {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          img,
+          video {
+            display: block;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            max-height: 100px;
+          }
+          span {
+            position: absolute;
+            top: -1px;
+            right: -2px;
+            z-index: 4;
+            background: white;
+            color: crimson;
+            padding: 3px 7px;
+            border: 1px solid crimson;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bolder;
+            cursor: pointer;
+          }
+        }
+      }
+      .stream {
+        span {
+          position: absolute;
+          top: -10px;
+          right: 5px;
+          color: crimson;
+          font-size: 2rem;
+          font-weight: 900;
+          cursor: pointer;
+        }
+      }
+      .imageInput {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+        .iconCamera {
+          font-size: 2rem;
+          cursor: pointer;
+        }
+        .fileUpload {
+          overflow: hidden;
+          margin: 0 10px;
+          position: relative;
+          .iconImage {
+            font-size: 2rem;
+            cursor: pointer;
+          }
+          input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+          }
+        }
+      }
+    }
+    .footer {
+      .buttonSubmit {
+        width: 100%;
+        color: teal;
+        padding: 10px 5px;
+        border: 0.3px solid teal;
+        border-radius: 15px;
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+          background-color: teal;
+        }
+      }
+    }
+  }
+}

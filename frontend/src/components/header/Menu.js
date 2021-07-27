@@ -68,7 +68,11 @@ const Menu = () => {
         </li>
         <li className="listDropdown" style={{ opacity: 1 }}>
           <div className="dropdown">
-            <Avatar src={auth.user.avatar} size="small" />
+            <Avatar
+              src={auth.user.avatar}
+              size="small"
+              style={{ filter: theme ? "invert(1)" : "invert(0)" }}
+            />
             <ArrowDropDown
               className="iconDown"
               onClick={() => {

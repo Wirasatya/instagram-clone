@@ -18,10 +18,21 @@ import Notify from "./components/alert/Notify";
 import Header from "./components/header/Header";
 import { getPosts } from "./context/actions/postAction";
 
+import io from "socket.io-client";
+import { GLOBALTYPES } from "./context/globalTypes";
+import SocketClient from "./SocketClient";
+import StatusModal from "./components/statusModal/StatusModal";
+
 function App() {
   const [{ auth, status, modal, call }, dispatch] = useContext(StateContext);
   useEffect(() => {
     refreshToken(dispatch);
+  }, [dispatch]);
+
+  useEffect(() => {
+    const socket = io();
+    dispatch({ type: GLOBALTYPES.SOCKET, payload: socket });
+    return () => socket.close();
   }, [dispatch]);
 
   useEffect(() => {
@@ -51,9 +62,9 @@ function App() {
       <div className={`app ${(status || modal) && "mode"}`}>
         <div className="main">
           {auth.token && <Header />}
-          {/* {status && <StatusModal />}
+          {status && <StatusModal />}
           {auth.token && <SocketClient />}
-          {call && <CallModal />} */}
+          {/* {call && <CallModal />} */}
 
           <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/register" component={Register} />

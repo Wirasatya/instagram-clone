@@ -12,7 +12,7 @@ export const checkImage = (file) => {
   return err;
 };
 
-export const imageUpload = async (images) => {
+export const imageUploadProfile = async (images) => {
   let imgArr = [];
   for (const item of images) {
     const formData = new FormData();
@@ -23,11 +23,38 @@ export const imageUpload = async (images) => {
       formData.append("file", item);
     }
 
-    formData.append("upload_preset", "instagramCloud");
+    formData.append("upload_preset", "instagramProfile");
     formData.append("cloud_name", "imwsd23");
 
     const res = await fetch(
-      "Image upload: https://api.cloudinary.com/v1_1/imwsd23/image/upload",
+      "https://api.cloudinary.com/v1_1/imwsd23/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+    imgArr.push({ public_id: data.public_id, url: data.secure_url });
+  }
+  return imgArr;
+};
+export const imageUploadPost = async (images) => {
+  let imgArr = [];
+  for (const item of images) {
+    const formData = new FormData();
+
+    if (item.camera) {
+      formData.append("file", item.camera);
+    } else {
+      formData.append("file", item);
+    }
+
+    formData.append("upload_preset", "instagramPost");
+    formData.append("cloud_name", "imwsd23");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/imwsd23/image/upload",
       {
         method: "POST",
         body: formData,

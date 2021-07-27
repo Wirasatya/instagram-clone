@@ -6,6 +6,7 @@ import theme from "../context/reducers/themeReducer";
 import status from "../context/reducers/statusReducer";
 import post from "../context/reducers/postReducer";
 import profile from "../context/reducers/profileReducer";
+import socket from "../context/reducers/socketReducer";
 
 function combineReducers(reducers) {
   return (state = {}, action) => {
@@ -54,6 +55,7 @@ export const initialState = {
     users: [],
     posts: [],
   },
+  socket: [],
 };
 
 export const StateContext = createContext();
@@ -70,6 +72,7 @@ export const StateProvider = ({ children }) => {
           status,
           post,
           profile,
+          socket,
         }),
         initialState
       )}

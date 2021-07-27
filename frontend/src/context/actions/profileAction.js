@@ -1,6 +1,6 @@
 import { GLOBALTYPES, DeleteData } from "../globalTypes";
 import { getDataAPI, patchDataAPI } from "../../utils/fetchData";
-import { imageUpload } from "../../utils/imageUpload";
+import { imageUploadProfile } from "../../utils/imageUpload";
 import { createNotify, removeNotify } from "../actions/notifyAction";
 
 export const PROFILE_TYPES = {
@@ -64,12 +64,11 @@ export const updateProfileUser = async (
       type: GLOBALTYPES.ALERT,
       payload: { error: "Your story too long." },
     });
-
   try {
     let media;
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
-    if (avatar) media = await imageUpload([avatar]);
+    if (avatar) media = await imageUploadProfile([avatar]);
 
     const res = await patchDataAPI(
       "user",

@@ -1,5 +1,5 @@
 import { GLOBALTYPES } from "../globalTypes";
-import { imageUpload } from "../../utils/imageUpload";
+import { imageUploadPost } from "../../utils/imageUpload";
 import {
   postDataAPI,
   getDataAPI,
@@ -24,7 +24,7 @@ export const createPost = async (
   let media = [];
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    if (images.length > 0) media = await imageUpload(images);
+    if (images.length > 0) media = await imageUploadPost(images);
 
     const res = await postDataAPI(
       "posts",
@@ -94,7 +94,7 @@ export const updatePost = async (
 
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    if (imgNewUrl.length > 0) media = await imageUpload(imgNewUrl);
+    if (imgNewUrl.length > 0) media = await imageUploadPost(imgNewUrl);
 
     const res = await patchDataAPI(
       `post/${status._id}`,

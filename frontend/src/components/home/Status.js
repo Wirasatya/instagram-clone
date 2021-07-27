@@ -5,10 +5,17 @@ import { GLOBALTYPES } from "../../context/globalTypes";
 import { StateContext } from "../../context/StateProvider";
 
 const Status = () => {
-  const [{ auth }, dispatch] = useContext(StateContext);
+  const [{ auth, theme }, dispatch] = useContext(StateContext);
   return (
     <div className="status">
-      <Avatar className="avatarStatus" src={auth.user.avatar} size="medium" />
+      <Avatar
+        style={{
+          filter: theme ? "invert(1)" : "invert(0)",
+        }}
+        className="avatarStatus"
+        src={auth.user.avatar}
+        size="medium"
+      />
 
       <button
         className="buttonStatus"

@@ -83,22 +83,25 @@ const Menu = () => {
           </div>
           {showDropdown && (
             <div className="dropdownContent" aria-labelledby="navbarDropdown">
-              <Link className="link" to={`/profile/${auth.user._id}`}>
+              <Link
+                onClick={() => setShowDropdown(!showDropdown)}
+                className="link"
+                to={`/profile/${auth.user._id}`}
+              >
                 Profile
               </Link>
 
               <label
                 htmlFor="theme"
                 className="dropdown-item"
-                onClick={() =>
+                onClick={() => {
                   dispatch({
                     type: GLOBALTYPES.THEME,
                     payload: !theme,
-                  })
-                }
+                  });
+                }}
               >
                 {theme ? "Light mode" : "Dark mode"}
-                {}
               </label>
               <hr />
               <Link className="link" to="/" onClick={() => logout(dispatch)}>

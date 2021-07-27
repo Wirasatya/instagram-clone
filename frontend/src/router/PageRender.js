@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import NotFound from "../pages/notFound/NotFound";
-import { StateContext } from "../context/StateProvider";
+import NotFound from "../components/notFound/NotFound";
 
 const generatePage = (pageName) => {
   const component = () => require(`../pages/${pageName}`).default;

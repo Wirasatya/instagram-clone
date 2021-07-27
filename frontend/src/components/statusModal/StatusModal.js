@@ -107,9 +107,12 @@ const StatusModal = () => {
   return (
     <div className="statusModal">
       <form onSubmit={handleSubmit}>
-        <div className="header">
+        <div className="headerStatus">
           <h5 className="createText">Create Post</h5>
           <span
+            style={{
+              filter: theme ? "invert(1)" : "invert(0)",
+            }}
             onClick={() =>
               dispatch({
                 type: GLOBALTYPES.STATUS,

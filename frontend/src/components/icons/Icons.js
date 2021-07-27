@@ -16,7 +16,7 @@ const Icons = ({ setContent, content, theme }) => {
     "👎",
     "😄",
     "😂",
-    "",
+    "🤣",
     "😘",
     "😗",
     "😚",
@@ -47,18 +47,16 @@ const Icons = ({ setContent, content, theme }) => {
         aria-expanded="false"
         onClick={handleShow}
       >
-        <span style={{ opacity: 0.4 }}>😄</span>
+        <span style={{ opacity: show ? "0.4" : "1" }}>😄</span>
       </span>
 
       {show && (
-        <div className="dropdownMenu" aria-labelledby="navbarDropdown">
-          <div className="reactions">
-            {reactions.map((icon) => (
-              <span key={icon} onClick={() => setContent(content + icon)}>
-                {icon}
-              </span>
-            ))}
-          </div>
+        <div className="reactions">
+          {reactions.map((icon) => (
+            <span key={icon} onClick={() => setContent(content + icon)}>
+              {icon}
+            </span>
+          ))}
         </div>
       )}
     </div>

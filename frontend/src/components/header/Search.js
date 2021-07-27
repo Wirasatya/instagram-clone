@@ -11,7 +11,7 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
 
-  const [{ auth }, dispatch] = useContext(StateContext);
+  const [{ auth, theme }, dispatch] = useContext(StateContext);
   const [load, setLoad] = useState(false);
 
   const handleSearch = async (e) => {
@@ -56,7 +56,10 @@ const Search = () => {
         <div
           className="close_search"
           onClick={handleClose}
-          style={{ opacity: users.length === 0 ? 0 : 1 }}
+          style={{
+            filter: theme ? "invert(1)" : "invert(0)",
+            opacity: users.length === 0 ? 0 : 1,
+          }}
         >
           &times;
         </div>

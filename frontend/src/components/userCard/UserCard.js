@@ -13,7 +13,7 @@ const UserCard = ({
   setShowFollowing,
   msg,
 }) => {
-  const { theme } = useContext(StateContext);
+  const [{ theme }] = useContext(StateContext);
 
   const handleCloseAll = () => {
     if (handleClose) handleClose();
@@ -56,7 +56,13 @@ const UserCard = ({
           onClick={handleCloseAll}
           className="link"
         >
-          <Avatar src={user.avatar} size="medium" />
+          <Avatar
+            style={{
+              filter: theme ? "invert(1)" : "invert(0)",
+            }}
+            src={user.avatar}
+            size="medium"
+          />
           <div className="infoWrapp">
             <span className="infoName">{user.username}</span>
 

@@ -38,7 +38,7 @@ const Menu = () => {
     <div className="menu">
       <ul className="navbarMenu">
         {navLinks.map((link) => (
-          <li className={`list ${isActive(link.path)}`} key={link.label}>
+          <li className={`listMenu ${isActive(link.path)}`} key={link.label}>
             <Link className="link" to={link.path}>
               <IconButton className="button" size="medium">
                 {iconUI(link.label)}
@@ -62,6 +62,7 @@ const Menu = () => {
           <div
             className="dropdownContentNotify"
             aria-labelledby="navbarDropdown"
+            style={{ bottom: notify.data.length > 0 ? "-325px" : "-399px" }}
           >
             {showNotify && <NotifyModal />}
           </div>
@@ -93,7 +94,7 @@ const Menu = () => {
 
               <label
                 htmlFor="theme"
-                className="dropdown-item"
+                className="themeMode"
                 onClick={() => {
                   dispatch({
                     type: GLOBALTYPES.THEME,

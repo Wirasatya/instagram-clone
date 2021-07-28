@@ -1,0 +1,29 @@
+.cardFooter {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  .leftFooter {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .iconWrapper {
+      .link {
+      }
+      img {
+        margin-left: 5px;
+        width: 35px;
+      }
+    }
+    .iconSaveUnsave {
+      font-size: 40px;
+      margin-right: 20px;
+    }
+  }
+  .rightFooter {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

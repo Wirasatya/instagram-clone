@@ -29,7 +29,6 @@ const Home = () => {
   return (
     <div className="home">
       <div className="containerHome">
-        <img src={LoadIcon} alt="loading" className="loadingPost" />
         <Status />
 
         {post.loading ? (

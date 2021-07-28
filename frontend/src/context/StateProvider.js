@@ -7,6 +7,14 @@ import status from "../context/reducers/statusReducer";
 import post from "../context/reducers/postReducer";
 import profile from "../context/reducers/profileReducer";
 import socket from "../context/reducers/socketReducer";
+import discover from "../context/reducers/discoverReducer";
+import detailPost from "../context/reducers/detailPostReducer";
+import call from "../context/reducers/callReducer";
+import message from "../context/reducers/messageReducer";
+import online from "../context/reducers/onlineReducer";
+import peer from "../context/reducers/peerReducer";
+import suggestion from "../context/reducers/suggestionReducer";
+import modal from "../context/reducers/modalReducer";
 
 function combineReducers(reducers) {
   return (state = {}, action) => {
@@ -43,12 +51,6 @@ export const initialState = {
     result: 0,
     page: 2,
   },
-  homePosts: {
-    loading: false,
-    posts: [],
-    result: 0,
-    page: 2,
-  },
   profile: {
     loading: false,
     ids: [],
@@ -56,6 +58,28 @@ export const initialState = {
     posts: [],
   },
   socket: [],
+  discover: {
+    loading: false,
+    posts: [],
+    result: 9,
+    page: 2,
+    firstLoad: false,
+  },
+  detailPost: [],
+  call: null,
+  message: {
+    users: [],
+    resultUsers: 0,
+    data: [],
+    firstLoad: false,
+  },
+  online: [],
+  peer: null,
+  suggestion: {
+    loading: false,
+    users: [],
+  },
+  modal: false,
 };
 
 export const StateContext = createContext();
@@ -73,6 +97,14 @@ export const StateProvider = ({ children }) => {
           post,
           profile,
           socket,
+          discover,
+          detailPost,
+          call,
+          message,
+          online,
+          peer,
+          suggestion,
+          modal,
         }),
         initialState
       )}

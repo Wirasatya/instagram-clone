@@ -1,0 +1,9 @@
+.postCard {
+  margin: 18px 15px;
+  box-shadow: 1px 0.5px 3px 2px #888888, -2px -1px 3px 1px #888888,
+    -0.5px 0.5px 3px 2px #888888, 0.5px -0.5px 3px 1px #888888;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

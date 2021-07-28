@@ -7,7 +7,7 @@ import "./header.scss";
 const Header = () => {
   return (
     <div className="header">
-      <nav className="navbar">
+      <nav className="navbarHeader">
         <Link to="/" className="link">
           <h1
             className="iconHeader"

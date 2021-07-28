@@ -35,7 +35,7 @@ const Menu = () => {
     if (pn === pathname) return "active";
   };
   return (
-    <div className="menu">
+    <div className="menuHeader">
       <ul className="navbarMenu">
         {navLinks.map((link) => (
           <li className={`listMenu ${isActive(link.path)}`} key={link.label}>
@@ -62,7 +62,7 @@ const Menu = () => {
           <div
             className="dropdownContentNotify"
             aria-labelledby="navbarDropdown"
-            style={{ bottom: notify.data.length > 0 ? "-325px" : "-399px" }}
+            style={{ bottom: notify.data.length > 0 ? "-325px" : "-410px" }}
           >
             {showNotify && <NotifyModal />}
           </div>

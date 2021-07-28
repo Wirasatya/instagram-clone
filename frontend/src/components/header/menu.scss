@@ -1,13 +1,15 @@
-.menu {
+.menuHeader {
   display: flex;
   flex: 1;
+  align-items: center;
+  margin-top: 10px;
   @media (max-width: 766px) {
     height: 40px;
     width: 100%;
   }
   .navbarMenu {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     @media (max-width: 766px) {
       justify-content: space-between;
@@ -63,6 +65,7 @@
         padding: 10px;
       }
       .dropdownContentNotify {
+        border: 0.4px solid lightgray;
         // bottom: -325px !important;
         // bottom: -399px !important;
       }

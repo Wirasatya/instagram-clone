@@ -8,6 +8,11 @@
     display: none;
   }
 }
+
+.MuiSvgIcon-root {
+  cursor: pointer;
+}
+
 button:focus {
   outline: none;
 }

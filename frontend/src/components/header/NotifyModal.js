@@ -48,7 +48,10 @@ const NotifyModal = () => {
             style={{ fontSize: "1.2rem", cursor: "pointer" }}
             onClick={handleSound}
           >
-            <NotificationsActive className="icon"></NotificationsActive>
+            <NotificationsActive
+              className="icon"
+              style={{ color: "crimson" }}
+            ></NotificationsActive>
           </IconButton>
         ) : (
           <IconButton

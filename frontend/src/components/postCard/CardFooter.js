@@ -38,7 +38,7 @@ const CardFooter = ({ post }) => {
     if (loadLike) return;
 
     setLoadLike(true);
-    await dispatch(likePost({ post, auth, socket }));
+    await likePost({ post, auth, socket }, dispatch);
     setLoadLike(false);
   };
 
@@ -46,7 +46,7 @@ const CardFooter = ({ post }) => {
     if (loadLike) return;
 
     setLoadLike(true);
-    await dispatch(unLikePost({ post, auth, socket }));
+    await unLikePost({ post, auth, socket }, dispatch);
     setLoadLike(false);
   };
 
@@ -63,7 +63,7 @@ const CardFooter = ({ post }) => {
     if (saveLoad) return;
 
     setSaveLoad(true);
-    await dispatch(savePost({ post, auth }));
+    await savePost({ post, auth }, dispatch);
     setSaveLoad(false);
   };
 
@@ -71,7 +71,7 @@ const CardFooter = ({ post }) => {
     if (saveLoad) return;
 
     setSaveLoad(true);
-    await dispatch(unSavePost({ post, auth }));
+    await unSavePost({ post, auth }, dispatch);
     setSaveLoad(false);
   };
 
@@ -97,6 +97,7 @@ const CardFooter = ({ post }) => {
           <Bookmark
             className="iconSaveUnsave"
             onClick={handleUnSavePost}
+            style={{ color: "teal" }}
           ></Bookmark>
         ) : (
           <BookmarkBorder

@@ -60,14 +60,13 @@
         position: absolute;
         display: flex;
         flex-direction: column;
-        right: 0;
         border-radius: 10px;
         padding: 10px;
       }
       .dropdownContentNotify {
         border: 0.4px solid lightgray;
-        // bottom: -325px !important;
-        // bottom: -399px !important;
+        right: -100px;
+        transform: translateX(-35%);
       }
       .dropdownContent {
         bottom: -100px !important;

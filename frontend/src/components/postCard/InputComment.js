@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { createComment } from "../../context/actions/commentAction";
 import { StateContext } from "../../context/StateProvider";
 import Icons from "../icons/Icons";
+import "./inputComment.scss";
 
 const InputComment = ({ children, post, onReply, setOnReply }) => {
   const [content, setContent] = useState("");

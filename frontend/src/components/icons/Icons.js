@@ -35,20 +35,17 @@ const Icons = ({ setContent, content, theme }) => {
 
   return (
     <div
-      className="icons"
+      className="iconsEmoji"
       style={{ opacity: 1, filter: theme ? "invert(1)" : "invert(0)" }}
     >
       <span
+        style={{ opacity: show ? "0.4" : "1" }}
         className="spanIcon"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
         onClick={handleShow}
       >
-        <span style={{ opacity: show ? "0.4" : "1" }}>😄</span>
+        😄
       </span>
+      {/* <EmojiEmotions ></EmojiEmotions> */}
 
       {show && (
         <div className="reactions">

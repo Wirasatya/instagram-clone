@@ -1,0 +1,61 @@
+.commentCard {
+  margin: 20px;
+  .link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    .textName {
+      margin-left: 5px;
+    }
+  }
+  .contentComment {
+    background: #eee;
+    padding: 7px;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .leftContentComment {
+      textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+      }
+      div {
+        .readMore {
+          cursor: pointer;
+          color: crimson;
+        }
+      }
+      .commentInfo {
+        .commentMoment {
+          cursor: text;
+          margin-right: 8px;
+          color: gray;
+        }
+        .likesComment {
+          margin-right: 8px;
+          font-weight: 600;
+          cursor: text;
+        }
+        .updateComment {
+          margin-right: 8px;
+          font-weight: 600;
+        }
+        .cancelUpdate {
+          margin-right: 8px;
+          font-weight: 600;
+        }
+        .replyCancel {
+          margin-right: 8px;
+          font-weight: 600;
+        }
+      }
+    }
+    .rightContentComment {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.menuComment {
+  position: relative;
+  &:hover {
+    .dropdownContent {
+      display: block;
+    }
+  }
+  .iconMoreVert {
+    cursor: pointer;
+  }
+  .dropdownContent {
+    min-width: 150px;
+    display: none;
+    position: absolute;
+    border: 0.3px solid lightgray;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 10;
+    .dropdoownItem {
+      padding: 5px 10px;
+      align-items: center;
+      display: flex;
+      .iconDropdown {
+        padding-right: 5px;
+        margin-right: 5px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}

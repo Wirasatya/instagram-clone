@@ -62,7 +62,10 @@ const Menu = () => {
           <div
             className="dropdownContentNotify"
             aria-labelledby="navbarDropdown"
-            style={{ bottom: notify.data.length > 0 ? "-325px" : "-410px" }}
+            style={{
+              bottom: notify.data.length > 0 ? "-325px" : "-410px",
+              display: showNotify ? "block" : "none",
+            }}
           >
             {showNotify && <NotifyModal />}
           </div>

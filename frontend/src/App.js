@@ -22,9 +22,10 @@ import io from "socket.io-client";
 import { GLOBALTYPES } from "./context/globalTypes";
 import SocketClient from "./SocketClient";
 import StatusModal from "./components/statusModal/StatusModal";
+import { getSuggestions } from "./context/actions/suggestionAction";
 
 function App() {
-  const [{ auth, status, modal, call }, dispatch] = useContext(StateContext);
+  const [{ auth, status, modal }, dispatch] = useContext(StateContext);
   useEffect(() => {
     refreshToken(dispatch);
   }, [dispatch]);
@@ -38,7 +39,7 @@ function App() {
   useEffect(() => {
     if (auth.token) {
       getPosts(auth.token, dispatch);
-      // dispatch(getSuggestions(auth.token));
+      getSuggestions(auth.token, dispatch);
       getNotifies(auth.token, dispatch);
     }
   }, [dispatch, auth.token]);

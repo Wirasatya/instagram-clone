@@ -1,0 +1,21 @@
+.rightSidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  .suggestionWrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    .textTitle {
+      color: crimson;
+    }
+  }
+  .loadingIcon {
+    width: 100px;
+    margin: 30px auto;
+    .suggestionsList {
+      margin-top: 5px;
+    }
+  }
+}

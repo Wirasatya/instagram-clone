@@ -1,0 +1,30 @@
+.inputComment {
+  display: flex;
+  align-items: center;
+  .newComment {
+    background: #f7f7f7;
+    border: none;
+    outline: none;
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 0 0 0 10px;
+  }
+  .iconsEmoji {
+    .spanIcon {
+      transform: translateY(-50%);
+      margin-right: 5px;
+    }
+    .reactions {
+      transform: translate(-115%, 8%) !important;
+    }
+  }
+  .postBtn {
+    border: none;
+    outline: none;
+    background: #f7f7f7;
+    color: blue;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+}

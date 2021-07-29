@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    align-items: center;
     .avatarIcon {
       height: 120px;
       width: 100px;
@@ -61,6 +62,10 @@
         .textMobile {
           color: crimson;
         }
+        margin-bottom: 5px;
+      }
+      .textAddress {
+        margin-bottom: 5px;
       }
     }
   }

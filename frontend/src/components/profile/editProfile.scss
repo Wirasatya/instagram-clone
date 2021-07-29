@@ -118,7 +118,14 @@
       margin-bottom: 10px;
       padding: 5px 0;
       .selectGender {
+        width: 100%;
         text-transform: capitalize;
+        padding: 7px 15px;
+        margin: 5px 0 0;
+        border: 0.25px solid lightgray;
+        &:focus {
+          outline: none;
+        }
         option {
           font-weight: 500;
         }

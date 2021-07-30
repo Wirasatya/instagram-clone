@@ -63,7 +63,6 @@ const Menu = () => {
             className="dropdownContentNotify"
             aria-labelledby="navbarDropdown"
             style={{
-              bottom: notify.data.length > 0 ? "-325px" : "-410px",
               display: showNotify ? "block" : "none",
             }}
           >

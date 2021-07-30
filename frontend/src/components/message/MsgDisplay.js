@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
 import { Avatar } from "@material-ui/core";
-import { DeleteOutlined } from "@material-ui/icons";
+import {
+  Call,
+  DeleteOutlined,
+  PhoneDisabled,
+  Videocam,
+  VideocamOff,
+} from "@material-ui/icons";
 import { imageShow, videoShow } from "../../utils/mediaShow";
 import { deleteMessages } from "../../context/actions/messageAction";
 import { StateContext } from "../../context/StateProvider";
 import Times from "./Times";
+import "./msgDisplay.scss";
 
 const MsgDisplay = ({ user, msg, theme, data }) => {
   const [{ auth }, dispatch] = useContext(StateContext);
@@ -19,14 +26,26 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
 
   return (
     <>
-      <div className="chatTitle">
-        <Avatar src={user.avatar} size="small" />
-        <span>{user.username}</span>
+      <div className="msgHeader">
+        {user._id === auth.user._id ? (
+          <>
+            <span>{user.username}</span>
+            <Avatar src={user.avatar} className="avatarMsg" size="small" />
+          </>
+        ) : (
+          <>
+            <Avatar src={user.avatar} className="avatarMsg" size="small" />
+            <span>{user.username}</span>
+          </>
+        )}
       </div>
 
-      <div className="chatContent">
+      <div className="msgBody">
         {user._id === auth.user._id && (
-          <DeleteOutlined onClick={handleDeleteMessages}></DeleteOutlined>
+          <DeleteOutlined
+            className="deleteIconMsg"
+            onClick={handleDeleteMessages}
+          ></DeleteOutlined>
         )}
 
         <div className="msgTextWrapper">
@@ -60,13 +79,17 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
                 filter: theme ? "invert(1)" : "invert(0)",
               }}
             >
-              {msg.call.times === 0
-                ? msg.call.video
-                  ? "videocam_off"
-                  : "phone_disabled"
-                : msg.call.video
-                ? "video_camera_front"
-                : "call"}
+              {msg.call.times === 0 ? (
+                msg.call.video ? (
+                  <VideocamOff></VideocamOff>
+                ) : (
+                  <PhoneDisabled></PhoneDisabled>
+                )
+              ) : msg.call.video ? (
+                <Videocam></Videocam>
+              ) : (
+                <Call></Call>
+              )}
             </span>
 
             <div className="textLeftMsg">

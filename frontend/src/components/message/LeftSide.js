@@ -8,6 +8,8 @@ import {
   getConversations,
 } from "../../context/actions/messageAction";
 import { StateContext } from "../../context/StateProvider";
+import "./leftSide.scss";
+import { FiberManualRecord } from "@material-ui/icons";
 
 const LeftSide = () => {
   const [{ auth, message, online }, dispatch] = useContext(StateContext);
@@ -88,7 +90,7 @@ const LeftSide = () => {
 
   return (
     <>
-      <form className="message_header" onSubmit={handleSearch}>
+      <form className="leftSideHeader" onSubmit={handleSearch}>
         <input
           type="text"
           value={search}
@@ -101,13 +103,13 @@ const LeftSide = () => {
         </button>
       </form>
 
-      <div className="message_chat_list">
+      <div className="messageChatList">
         {searchUsers.length !== 0 ? (
           <>
             {searchUsers.map((user) => (
               <div
                 key={user._id}
-                className={`message_user ${isActive(user)}`}
+                className={`messageUser ${isActive(user)}`}
                 onClick={() => handleAddUser(user)}
               >
                 <UserCard user={user} />
@@ -119,16 +121,21 @@ const LeftSide = () => {
             {message.users.map((user) => (
               <div
                 key={user._id}
-                className={`message_user ${isActive(user)}`}
+                className={`messageUser ${isActive(user)}`}
                 onClick={() => handleAddUser(user)}
               >
                 <UserCard user={user} msg={true}>
                   {user.online ? (
-                    <i className="fas fa-circle text-success" />
+                    <FiberManualRecord
+                      fontSize="small"
+                      className="iconOnline"
+                    ></FiberManualRecord>
                   ) : (
                     auth.user.following.find(
                       (item) => item._id === user._id
-                    ) && <i className="fas fa-circle" />
+                    ) && (
+                      <FiberManualRecord fontSize="small"></FiberManualRecord>
+                    )
                   )}
                 </UserCard>
               </div>

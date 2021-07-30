@@ -1,0 +1,23 @@
+.messagePage {
+  width: 100%;
+  height: calc(100vh - 100px);
+  border: 1px solid #ddd;
+  margin-top: 15px;
+  border-radius: 3px;
+  background: #fbfbfb;
+  display: flex;
+  .leftMessage {
+    flex: 0.35;
+    border-right: 0.3px solid lightgray;
+  }
+  .rightMessage {
+    flex: 0.65;
+    .titleWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+    }
+  }
+}

@@ -26,10 +26,20 @@
     .link {
       display: flex;
       align-items: center;
+      @media (max-width: 425px) {
+        flex-direction: column;
+      }
       .infoWrap {
         margin: 0 10px;
         display: flex;
         flex-direction: column;
+        div {
+          @media (max-width: 425px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
         .infoName {
           margin-right: 5px;
         }

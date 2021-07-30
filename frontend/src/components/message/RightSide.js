@@ -14,6 +14,14 @@ import {
 } from "../../context/actions/messageAction";
 import LoadIcon from "../../images/loading.gif";
 import { StateContext } from "../../context/StateProvider";
+import {
+  Call,
+  DeleteOutline,
+  ImageOutlined,
+  NearMeOutlined,
+  Videocam,
+} from "@material-ui/icons";
+import "./rightSide.scss";
 
 const RightSide = () => {
   const [{ auth, message, theme, socket, peer }, dispatch] =
@@ -197,28 +205,34 @@ const RightSide = () => {
 
   return (
     <>
-      <div className="message_header" style={{ cursor: "pointer" }}>
+      <div className="rightSideHeader" style={{ cursor: "pointer" }}>
         {user.length !== 0 && (
           <UserCard user={user}>
             <div>
-              <i className="fas fa-phone-alt" onClick={handleAudioCall} />
-
-              <i className="fas fa-video mx-3" onClick={handleVideoCall} />
-
-              <i
-                className="fas fa-trash text-danger"
+              <Call
+                style={{ marginRight: "5px" }}
+                fontSize="medium"
+                onClick={handleAudioCall}
+              ></Call>
+              <Videocam
+                style={{ marginRight: "5px" }}
+                fontSize="medium"
+                onClick={handleVideoCall}
+              ></Videocam>
+              <DeleteOutline
+                style={{ color: "crimson" }}
                 onClick={handleDeleteConversation}
-              />
+              ></DeleteOutline>
             </div>
           </UserCard>
         )}
       </div>
 
       <div
-        className="chat_container"
+        className="chatContentContainer"
         style={{ height: media.length > 0 ? "calc(100% - 180px)" : "" }}
       >
-        <div className="chat_display" ref={refDisplay}>
+        <div className="chatDisplay" ref={refDisplay}>
           <button style={{ marginTop: "-25px", opacity: 0 }} ref={pageEnd}>
             Load more
           </button>
@@ -226,13 +240,13 @@ const RightSide = () => {
           {data.map((msg, index) => (
             <div key={index}>
               {msg.sender !== auth.user._id && (
-                <div className="chat_row other_message">
+                <div className="chatRow otherMessage">
                   <MsgDisplay user={user} msg={msg} theme={theme} />
                 </div>
               )}
 
               {msg.sender === auth.user._id && (
-                <div className="chat_row you_message">
+                <div className="chatRow yourMessage">
                   <MsgDisplay
                     user={auth.user}
                     msg={msg}
@@ -245,7 +259,7 @@ const RightSide = () => {
           ))}
 
           {loadMedia && (
-            <div className="chat_row you_message">
+            <div className="chatRow yourMessage">
               <img src={LoadIcon} alt="loading" />
             </div>
           )}
@@ -253,7 +267,7 @@ const RightSide = () => {
       </div>
 
       <div
-        className="show_media"
+        className="showMedia"
         style={{ display: media.length > 0 ? "grid" : "none" }}
       >
         {media.map((item, index) => (
@@ -266,7 +280,7 @@ const RightSide = () => {
         ))}
       </div>
 
-      <form className="chat_input" onSubmit={handleSubmit}>
+      <form className="chatFooter" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Enter you message..."
@@ -281,8 +295,11 @@ const RightSide = () => {
 
         <Icons setContent={setText} content={text} theme={theme} />
 
-        <div className="file_upload">
-          <i className="fas fa-image text-danger" />
+        <div className="fileUpload">
+          <ImageOutlined
+            className="iconImageInput"
+            fontSize="small"
+          ></ImageOutlined>
           <input
             type="file"
             name="file"
@@ -295,10 +312,10 @@ const RightSide = () => {
 
         <button
           type="submit"
-          className="material-icons"
+          className="submitMessage"
           disabled={text || media.length > 0 ? false : true}
         >
-          near_me
+          <NearMeOutlined fontSize="small"></NearMeOutlined>
         </button>
       </form>
     </>

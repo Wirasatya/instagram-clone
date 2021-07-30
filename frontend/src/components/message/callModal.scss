@@ -1,0 +1,107 @@
+.callModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  background: #0008;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .callBox {
+    width: 100%;
+    max-width: 400px;
+    background: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding: 50px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px darkblue;
+    &h4,
+    h6 {
+      margin-top: 5px;
+    }
+    .headerContent {
+      align-items: center;
+      justify-content: center;
+      .avatarCallModal {
+        margin: 10px auto;
+      }
+    }
+    .timer {
+      transform: translateY(-15px);
+    }
+    .callMenu {
+      min-width: 280px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      button {
+        font-size: 2rem;
+        background: #eee;
+        padding: 15px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+      .buttonCallDisable {
+        color: crimson;
+      }
+      .buttonCallVideo {
+        color: teal;
+      }
+      .buttonCallCall {
+        color: teal;
+      }
+    }
+  }
+  .showVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    .yourVideo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      max-height: 250px;
+      border-radius: 5px;
+      border: 1px solid crimson;
+      z-index: 10;
+    }
+    .otherVideo {
+      width: 100%;
+      height: 100%;
+    }
+    .timeVideo {
+      position: absolute;
+      bottom: 170px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+    }
+    .buttonEndCall {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: initial;
+      font-size: 2rem;
+      background: #eee;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      color: crimson;
+    }
+  }
+}

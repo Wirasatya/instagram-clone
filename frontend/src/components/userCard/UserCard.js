@@ -3,6 +3,13 @@ import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { StateContext } from "../../context/StateProvider";
 import "./userCard.scss";
+import {
+  Call,
+  InsertPhoto,
+  PhoneDisabled,
+  Videocam,
+  VideocamOff,
+} from "@material-ui/icons";
 
 const UserCard = ({
   children,
@@ -29,19 +36,24 @@ const UserCard = ({
         </div>
         {user.media.length > 0 && (
           <div>
-            {user.media.length} <i className="fas fa-image" />
+            {user.media.length}{" "}
+            <InsertPhoto className="iconImagesLength"></InsertPhoto>
           </div>
         )}
 
         {user.call && (
-          <span className="material-icons">
-            {user.call.times === 0
-              ? user.call.video
-                ? "videocam_off"
-                : "phone_disabled"
-              : user.call.video
-              ? "video_camera_front"
-              : "call"}
+          <span>
+            {user.call.times === 0 ? (
+              user.call.video ? (
+                <VideocamOff className="iconMsgSmall"></VideocamOff>
+              ) : (
+                <PhoneDisabled className="iconMsgSmall"></PhoneDisabled>
+              )
+            ) : user.call.video ? (
+              <Videocam className="iconMsgSmall"></Videocam>
+            ) : (
+              <Call className="iconMsgSmall"></Call>
+            )}
           </span>
         )}
       </>

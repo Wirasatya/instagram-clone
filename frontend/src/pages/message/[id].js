@@ -1,15 +1,16 @@
 import React from "react";
+import "./message.scss";
 import LeftSide from "../../components/message/LeftSide";
 import RightSide from "../../components/message/RightSide";
 
 const Conversation = () => {
   return (
-    <div className="message d-flex">
-      <div className="col-md-4 border-right px-0 left_mess">
+    <div className="messagePage">
+      <div className="leftMessage">
         <LeftSide />
       </div>
 
-      <div className="col-md-8 px-0">
+      <div className="rightMessage">
         <RightSide />
       </div>
     </div>

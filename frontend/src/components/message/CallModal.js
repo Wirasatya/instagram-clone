@@ -1,13 +1,21 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Avatar from "../Avatar";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
-import { addMessage } from "../../redux/actions/messageAction";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useContext,
+} from "react";
+import { Avatar } from "@material-ui/core";
+import { GLOBALTYPES } from "../../context/globalTypes";
+import { StateContext } from "../../context/StateProvider";
+import { addMessage } from "../../context/actions/messageAction";
 import RingRing from "../../audio/ringring.mp3";
+import { Call, PhoneDisabled, Videocam } from "@material-ui/icons";
+import "./callModal.scss";
 
 const CallModal = () => {
-  const { call, auth, peer, socket, theme } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const [{ call, auth, peer, socket, theme }, dispatch] =
+    useContext(StateContext);
 
   const [hours, setHours] = useState(0);
   const [mins, setMins] = useState(0);
@@ -49,7 +57,7 @@ const CallModal = () => {
           call: { video: call.video, times },
           createdAt: new Date().toISOString(),
         };
-        dispatch(addMessage({ msg, auth, socket }));
+        addMessage({ msg, auth, socket }, dispatch);
       }
     },
     [auth, dispatch, socket]
@@ -181,15 +189,19 @@ const CallModal = () => {
   }, [answer]);
 
   return (
-    <div className="call_modal">
+    <div className="callModal">
       <div
-        className="call_box"
+        className="callBox"
         style={{
           display: answer && call.video ? "none" : "flex",
         }}
       >
-        <div className="text-center" style={{ padding: "40px 0" }}>
-          <Avatar src={call.avatar} size="supper-avatar" />
+        <div className="headerContent" style={{ padding: "40px 0" }}>
+          <Avatar
+            src={call.avatar}
+            className="avatarCallModal"
+            style={{ width: "50px" }}
+          />
           <h4>{call.username}</h4>
           <h6>{call.fullname}</h6>
 
@@ -224,29 +236,20 @@ const CallModal = () => {
           </div>
         )}
 
-        <div className="call_menu">
-          <button
-            className="material-icons text-danger"
-            onClick={handleEndCall}
-          >
-            call_end
+        <div className="callMenu">
+          <button className="buttonCallDisable" onClick={handleEndCall}>
+            <PhoneDisabled className="iconCallModal"></PhoneDisabled>
           </button>
 
           {call.recipient === auth.user._id && !answer && (
             <>
               {call.video ? (
-                <button
-                  className="material-icons text-success"
-                  onClick={handleAnswer}
-                >
-                  videocam
+                <button className="buttonCallVideo" onClick={handleAnswer}>
+                  <Videocam className="iconCallModal"></Videocam>
                 </button>
               ) : (
-                <button
-                  className="material-icons text-success"
-                  onClick={handleAnswer}
-                >
-                  call
+                <button className="buttonCallCall" onClick={handleAnswer}>
+                  <Call className="iconCallModal"></Call>
                 </button>
               )}
             </>
@@ -255,16 +258,16 @@ const CallModal = () => {
       </div>
 
       <div
-        className="show_video"
+        className="showVideo"
         style={{
           opacity: answer && call.video ? "1" : "0",
           filter: theme ? "invert(1)" : "invert(0)",
         }}
       >
-        <video ref={youVideo} className="you_video" playsInline muted />
-        <video ref={otherVideo} className="other_video" playsInline />
+        <video ref={youVideo} className="yourVideo" playsInline muted />
+        <video ref={otherVideo} className="otherVideo" playsInline />
 
-        <div className="time_video">
+        <div className="timeVideo">
           <span>{hours.toString().length < 2 ? "0" + hours : hours}</span>
           <span>:</span>
           <span>{mins.toString().length < 2 ? "0" + mins : mins}</span>
@@ -272,11 +275,8 @@ const CallModal = () => {
           <span>{second.toString().length < 2 ? "0" + second : second}</span>
         </div>
 
-        <button
-          className="material-icons text-danger end_call"
-          onClick={handleEndCall}
-        >
-          call_end
+        <button className="buttonEndCall" onClick={handleEndCall}>
+          <PhoneDisabled className="iconCallModal"></PhoneDisabled>
         </button>
       </div>
     </div>

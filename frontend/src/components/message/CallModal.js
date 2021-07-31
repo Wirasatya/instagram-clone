@@ -198,9 +198,11 @@ const CallModal = () => {
       >
         <div className="headerContent" style={{ padding: "40px 0" }}>
           <Avatar
+            style={{
+              filter: theme ? "invert(1)" : "invert(0)",
+            }}
             src={call.avatar}
             className="avatarCallModal"
-            style={{ width: "50px" }}
           />
           <h4>{call.username}</h4>
           <h6>{call.fullname}</h6>
@@ -238,18 +240,33 @@ const CallModal = () => {
 
         <div className="callMenu">
           <button className="buttonCallDisable" onClick={handleEndCall}>
-            <PhoneDisabled className="iconCallModal"></PhoneDisabled>
+            <PhoneDisabled
+              style={{
+                filter: theme ? "invert(1)" : "invert(0)",
+              }}
+              className="iconCallModal"
+            ></PhoneDisabled>
           </button>
 
           {call.recipient === auth.user._id && !answer && (
             <>
               {call.video ? (
                 <button className="buttonCallVideo" onClick={handleAnswer}>
-                  <Videocam className="iconCallModal"></Videocam>
+                  <Videocam
+                    style={{
+                      filter: theme ? "invert(1)" : "invert(0)",
+                    }}
+                    className="iconCallModal"
+                  ></Videocam>
                 </button>
               ) : (
                 <button className="buttonCallCall" onClick={handleAnswer}>
-                  <Call className="iconCallModal"></Call>
+                  <Call
+                    style={{
+                      filter: theme ? "invert(1)" : "invert(0)",
+                    }}
+                    className="iconCallModal"
+                  ></Call>
                 </button>
               )}
             </>

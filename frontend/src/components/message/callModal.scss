@@ -21,15 +21,17 @@
     padding: 50px 0;
     border-radius: 5px;
     box-shadow: 0 0 5px darkblue;
-    &h4,
-    h6 {
-      margin-top: 5px;
-    }
     .headerContent {
       align-items: center;
       justify-content: center;
       .avatarCallModal {
         margin: 10px auto;
+        width: 70px;
+        height: 70px;
+      }
+      h4,
+      h6 {
+        text-align: center;
       }
     }
     .timer {
@@ -41,7 +43,6 @@
       display: flex;
       justify-content: space-around;
       button {
-        font-size: 2rem;
         background: #eee;
         padding: 15px;
         border-radius: 50%;
@@ -51,12 +52,15 @@
       }
       .buttonCallDisable {
         color: crimson;
+        font-size: 20px;
       }
       .buttonCallVideo {
         color: teal;
+        font-size: 20px;
       }
       .buttonCallCall {
         color: teal;
+        font-size: 20px;
       }
     }
   }
@@ -94,14 +98,16 @@
       left: 50%;
       transform: translateX(-50%);
       pointer-events: initial;
-      font-size: 2rem;
       background: #eee;
-      padding: 15px;
+      padding: 10px;
       border-radius: 50%;
       cursor: pointer;
       border: none;
       outline: none;
       color: crimson;
+      .iconCallModal {
+        font-size: 20px;
+      }
     }
   }
 }

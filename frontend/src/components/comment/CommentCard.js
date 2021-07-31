@@ -76,7 +76,13 @@ const CommentCard = ({ children, comment, post, commentId }) => {
   return (
     <div className="commentCard" style={styleCard}>
       <Link to={`/profile/${comment.user._id}`} className="link">
-        <Avatar src={comment.user.avatar} size="small" />
+        <Avatar
+          style={{
+            filter: theme ? "invert(1)" : "invert(0)",
+          }}
+          src={comment.user.avatar}
+          size="small"
+        />
         <h6 className="textName">{comment.user.username}</h6>
       </Link>
 

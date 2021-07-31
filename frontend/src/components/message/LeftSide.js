@@ -9,10 +9,12 @@ import {
 } from "../../context/actions/messageAction";
 import { StateContext } from "../../context/StateProvider";
 import "./leftSide.scss";
-import { FiberManualRecord } from "@material-ui/icons";
+import { FiberManualRecord, Minimize } from "@material-ui/icons";
 
 const LeftSide = () => {
   const [{ auth, message, online }, dispatch] = useContext(StateContext);
+
+  const [minimize, setMinimize] = useState(false);
 
   const [search, setSearch] = useState("");
   const [searchUsers, setSearchUsers] = useState([]);
@@ -22,6 +24,11 @@ const LeftSide = () => {
 
   const pageEnd = useRef();
   const [page, setPage] = useState(0);
+
+  const handleMinimize = (e) => {
+    e.preventDefault();
+    setMinimize(!minimize);
+  };
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -90,63 +97,74 @@ const LeftSide = () => {
 
   return (
     <>
-      <form className="leftSideHeader" onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={search}
-          placeholder="Enter to Search..."
-          onChange={(e) => setSearch(e.target.value)}
-        />
+      <button
+        style={{ display: "none" }}
+        onClick={handleMinimize}
+        className="buttonIconMinimize"
+      >
+        <Minimize className="IconMinimize"></Minimize>
+      </button>
+      {!minimize && (
+        <>
+          <form className="leftSideHeader" onSubmit={handleSearch}>
+            <input
+              type="text"
+              value={search}
+              placeholder="Enter to Search..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
 
-        <button type="submit" style={{ display: "none" }}>
-          Search
-        </button>
-      </form>
+            <button type="submit" style={{ display: "none" }}>
+              Search
+            </button>
+          </form>
 
-      <div className="messageChatList">
-        {searchUsers.length !== 0 ? (
-          <>
-            {searchUsers.map((user) => (
-              <div
-                key={user._id}
-                className={`messageUser ${isActive(user)}`}
-                onClick={() => handleAddUser(user)}
-              >
-                <UserCard user={user} />
-              </div>
-            ))}
-          </>
-        ) : (
-          <>
-            {message.users.map((user) => (
-              <div
-                key={user._id}
-                className={`messageUser ${isActive(user)}`}
-                onClick={() => handleAddUser(user)}
-              >
-                <UserCard user={user} msg={true}>
-                  {user.online ? (
-                    <FiberManualRecord
-                      fontSize="small"
-                      className="iconOnline"
-                    ></FiberManualRecord>
-                  ) : (
-                    auth.user.following.find(
-                      (item) => item._id === user._id
-                    ) && (
-                      <FiberManualRecord fontSize="small"></FiberManualRecord>
-                    )
-                  )}
-                </UserCard>
-              </div>
-            ))}
-          </>
-        )}
+          <div className="messageChatList">
+            {searchUsers.length !== 0 ? (
+              <>
+                {searchUsers.map((user) => (
+                  <div
+                    key={user._id}
+                    className={`messageUser ${isActive(user)}`}
+                    onClick={() => handleAddUser(user)}
+                  >
+                    <UserCard user={user} />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                {message.users.map((user) => (
+                  <div
+                    key={user._id}
+                    className={`messageUser ${isActive(user)}`}
+                    onClick={() => handleAddUser(user)}
+                  >
+                    <UserCard user={user} msg={true}>
+                      {user.online ? (
+                        <FiberManualRecord
+                          fontSize="small"
+                          className="iconOnline"
+                        ></FiberManualRecord>
+                      ) : (
+                        auth.user.following.find(
+                          (item) => item._id === user._id
+                        ) && (
+                          <FiberManualRecord fontSize="small"></FiberManualRecord>
+                        )
+                      )}
+                    </UserCard>
+                  </div>
+                ))}
+              </>
+            )}
 
-        <button ref={pageEnd} style={{ opacity: 0 }}>
-          Load More
-        </button>
-      </div>
+            <button ref={pageEnd} style={{ opacity: 0 }}>
+              Load More
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };

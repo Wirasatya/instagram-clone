@@ -210,17 +210,28 @@ const RightSide = () => {
           <UserCard user={user}>
             <div>
               <Call
-                style={{ marginRight: "5px" }}
+                style={{
+                  marginRight: "5px",
+                  filter: theme ? "invert(1)" : "invert(0)",
+                  color: "teal",
+                }}
                 fontSize="medium"
                 onClick={handleAudioCall}
               ></Call>
               <Videocam
-                style={{ marginRight: "5px" }}
+                style={{
+                  marginRight: "5px",
+                  filter: theme ? "invert(1)" : "invert(0)",
+                  color: "teal",
+                }}
                 fontSize="medium"
                 onClick={handleVideoCall}
               ></Videocam>
               <DeleteOutline
-                style={{ color: "crimson" }}
+                style={{
+                  filter: theme ? "invert(1)" : "invert(0)",
+                  color: "crimson",
+                }}
                 onClick={handleDeleteConversation}
               ></DeleteOutline>
             </div>

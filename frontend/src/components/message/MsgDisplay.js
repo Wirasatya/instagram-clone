@@ -30,11 +30,25 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
         {user._id === auth.user._id ? (
           <>
             <span>{user.username}</span>
-            <Avatar src={user.avatar} className="avatarMsg" size="small" />
+            <Avatar
+              style={{
+                filter: theme ? "invert(1)" : "invert(0)",
+              }}
+              src={user.avatar}
+              className="avatarMsg"
+              size="small"
+            />
           </>
         ) : (
           <>
-            <Avatar src={user.avatar} className="avatarMsg" size="small" />
+            <Avatar
+              style={{
+                filter: theme ? "invert(1)" : "invert(0)",
+              }}
+              src={user.avatar}
+              className="avatarMsg"
+              size="small"
+            />
             <span>{user.username}</span>
           </>
         )}
@@ -43,6 +57,9 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
       <div className="msgBody">
         {user._id === auth.user._id && (
           <DeleteOutlined
+            style={{
+              filter: theme ? "invert(1)" : "invert(0)",
+            }}
             className="deleteIconMsg"
             onClick={handleDeleteMessages}
           ></DeleteOutlined>

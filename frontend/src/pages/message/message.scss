@@ -21,3 +21,44 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .messagePage {
+    flex-direction: column;
+    height: calc(100vh - 120px);
+    margin: 0;
+    .leftMessage {
+      flex: none;
+      .buttonIconMinimize {
+        position: fixed;
+        left: 50%;
+        top: 120px;
+        transform: translateX(-50%);
+        z-index: 1;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: transparent;
+        display: block !important;
+        .IconMinimize {
+          font-size: 30px;
+          transform: translateY(-75%);
+        }
+      }
+      .leftSideHeader {
+        height: 30px;
+      }
+      .messageChatList {
+        display: flex;
+        height: 40px;
+        .messageUser {
+          min-width: 200px;
+        }
+      }
+    }
+    .rightMessage {
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+}

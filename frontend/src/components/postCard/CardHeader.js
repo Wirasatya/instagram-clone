@@ -6,7 +6,7 @@ import moment from "moment";
 import { GLOBALTYPES } from "../../context/globalTypes";
 import { StateContext } from "../../context/StateProvider";
 import { deletePost } from "../../context/actions/postAction";
-// import { BASE_URL } from "../../../utils/config";
+import { BASE_URL } from "../../utils/config";
 import "./cardHeader.scss";
 
 const CardHeader = ({ post }) => {
@@ -25,9 +25,9 @@ const CardHeader = ({ post }) => {
     }
   };
 
-  // const handleCopyLink = () => {
-  //   navigator.clipboard.writeText(`${BASE_URL}/post/${post._id}`);
-  // };
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(`${BASE_URL}/post/${post._id}`);
+  };
 
   return (
     <div className="cardHeader">
@@ -66,7 +66,7 @@ const CardHeader = ({ post }) => {
             </>
           )}
 
-          <div className="itemDropdown">
+          <div className="itemDropdown" onClick={handleCopyLink}>
             <InsertLink className="iconDropdown"></InsertLink> Copy Link
           </div>
         </div>

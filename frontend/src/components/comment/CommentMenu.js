@@ -39,7 +39,8 @@ const CommentMenu = ({ post, comment, setOnEdit }) => {
                 MenuItem()
               ) : (
                 <div className="dropdoownItem" onClick={handleRemove}>
-                  <DeleteOutline className="iconDropdown"></DeleteOutline>
+                  <DeleteOutline className="iconDropdown"></DeleteOutline>{" "}
+                  Delete
                 </div>
               )
             ) : (

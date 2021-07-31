@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema(
     avatar: {
       type: String,
       default:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLD7-puUcHOkhENEikaFXpU6XA3J7gGWLdcA&usqp=CAU",
+        "https://res.cloudinary.com/imwsd23/image/upload/v1627743881/instagram/profile_picture/defaultAvatar_nnceoj.jpg",
     },
     role: {
       type: String,

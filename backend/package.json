@@ -4,8 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd ../frontend && npm run start",
+    "server-install": "npm install",
+    "client-install": "cd ../frontend && npm install",
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\" ",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "heroku-postbuild": "cd ../frontend && npm install && npm run build"
   },
   "keywords": [],
   "author": "",

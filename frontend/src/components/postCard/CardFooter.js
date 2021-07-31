@@ -90,7 +90,12 @@ const CardFooter = ({ post }) => {
             ></InsertComment>
           </Link>
 
-          <img src={Send} alt="Send" onClick={() => setIsShare(!isShare)} />
+          <img
+            src={Send}
+            style={{ cursor: "pointer" }}
+            alt="Send"
+            onClick={() => setIsShare(!isShare)}
+          />
         </div>
 
         {saved ? (

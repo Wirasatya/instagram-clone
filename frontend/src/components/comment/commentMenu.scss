@@ -1,5 +1,6 @@
 .menuComment {
   position: relative;
+  display: none;
   &:hover {
     .dropdownContent {
       display: block;
@@ -17,6 +18,7 @@
     border-radius: 10px;
     background-color: #fff;
     z-index: 10;
+    transform: translateX(-50%);
     .dropdoownItem {
       padding: 5px 10px;
       align-items: center;

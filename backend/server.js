@@ -53,6 +53,14 @@ app.use("/api", require("./routes/Comment.route"));
 app.use("/api", require("./routes/Notify.route"));
 app.use("/api", require("./routes/Message.route"));
 
+// production?
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
 // listen
 http.listen(PORT, () => {
   console.log("server running on port : " + PORT);
